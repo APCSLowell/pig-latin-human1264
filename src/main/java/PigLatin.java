@@ -41,13 +41,20 @@ public class PigLatin {
     }
 
    public String pigLatin(String sWord) {
+   String [] c = {"a","e","i","o","u","e","i","o","a","e","i","o","u","e","i","o","u","e","i","o","u"};
   String [] a = {"b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"};
   ArrayList<String> b = new ArrayList<String>();
+  boolean die = false;
         if(sWord.length()>0){
       if(findFirstVowel(sWord) > 0) {
+        die = false;
     for(int i = 0; i < sWord.length(); i++){
+      if(die){break;}
       for(int f = 0; f < a.length; f++){
-        if(sWord.substring(i,i+1).equals(a[f])){
+        if(sWord.substring(i,i+1).equals(c[f])){
+          die = true;
+          break;
+        } else if(sWord.substring(i,i+1).equals(a[f])){
           b.add(sWord.substring(i,i+1));
         }
       } 
