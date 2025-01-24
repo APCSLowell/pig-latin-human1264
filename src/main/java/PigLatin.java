@@ -65,5 +65,5 @@ public class PigLatin {
       else {return(sWord + "way");}
 }else{return("");}
 }
-
+}
  // end
