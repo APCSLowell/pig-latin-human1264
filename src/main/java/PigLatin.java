@@ -40,10 +40,11 @@ public class PigLatin {
         return -1;
     }
 
-   public String pigLatin(String sWord) {
+  public String pigLatin(String sWord) {
    String [] c = {"a","e","i","o","u","e","i","o","a","e","i","o","u","e","i","o","u","e","i","o","u"};
   String [] a = {"b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"};
-  ArrayList<String> b = new ArrayList<String>();
+  String [] b = new String[sWord.length()];
+  int indb = 0;
   boolean die = false;
         if(sWord.length()>0){
       if(findFirstVowel(sWord) > 0) {
@@ -55,15 +56,15 @@ public class PigLatin {
           die = true;
           break;
         } else if(sWord.substring(i,i+1).equals(a[f])){
-          b.add(sWord.substring(i,i+1));
+          b[indb] = sWord.substring(i,i+1);
+          indb++;
         }
       } 
     }
-     if(sWord.substring(0,2).equals("qu")){return(sWord.substring(2) + "quay");}else{return(sWord.substring(findFirstVowel(sWord)) + String.join("",b) + "ay");}
+     if(sWord.substring(0,2).equals("qu")){return(sWord.substring(2) + "quay");}else{return(sWord.substring(findFirstVowel(sWord)) + String.join("",b).replaceAll("null", "") + "ay");}
       } 
       else if(findFirstVowel(sWord) == -1){return(sWord + "ay");}
       else {return(sWord + "way");}
 }else{return("");}
-}
 }
  // end
